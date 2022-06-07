@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- cdn link: https://reactjs.org/docs/cdn-links.html -->
+    <!-- we are using babel to compile react in this html file -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <h1>my website</h1>
+    <div id="banner"></div>
+    <footer>Footer</footer>
+    <script type="text/babel">
+        // Need to create React components here
+        // babel is a compiler
+        const title = {
+            "subtitle" : "this is the subtitle",
+            "maintitle" : "this is maintitle"
+        }
+
+        const handleClick = (e) => {
+            console.log("You clicked me")
+            console.log('the sight title is:', title.subtitle)
+            console.log(e)
+        }
+        const Banner = () => {
+            // this is a react component that returns a JSX template
+            return (
+                <div className="banner">
+                <p>banner</p>
+                <h1>{title.maintitle}</h1>
+                <button onClick={handleClick}>Click Me</button>
+                <button onClick= {(e) => console.log(e, "this was clicked")}>Click me too</button>
+                </div>
+                // 
+                // right here we are going to write JSX
+ 
+            )
+        }
+        // Now we want to render this into the HTML page. Because of crossorigin script we have access to render function of react. 
+        // This render argument takes in two arguments. (<Component you want to render>, location of the component)
+        ReactDOM.render(<Banner/>, document.getElementById('banner'))
+    </script>
+</body>
+</html>
